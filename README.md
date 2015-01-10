@@ -1,7 +1,7 @@
 # PHP-batch-image-resize
 
 ## Introduction
-Batch resize image. Support nested folders. The file structure is preserved.
+Batch resize images. Support nested folders. The file structure is preserved.
 
 ## How to use
 1. Set the soruce and destination value at the head of `resizer.php`.
