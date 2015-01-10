@@ -2,8 +2,9 @@
 
 $from = '/path/from';
 $to = '/path/to';
+$isReplace = false;
 
-$resizer = new Resizer($from, $to, false);
+$resizer = new Resizer($from, $to, $isReplace);
 $resizer->resize();
 
 class Resizer
@@ -24,9 +25,27 @@ class Resizer
 
     public function resize()
     {
+        if (!$this->_checkToFolder()) {
+            echo "\n\e[0;37mCould not create destination folder. Unable to start!\n";
+            return;
+        }
+
         echo "\n\e[0;37mStart resizing!\n";
         $this->_folderLooper('');
         echo "\n\e[0;37mFinish resizing!\n";
+    }
+
+    private function _checkToFolder()
+    {
+        if (is_dir($this->_from)) {
+            if (!is_dir($this->_to)) {
+                mkdir($this->_to);
+            }
+            if (!is_dir($this->_to)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private function _folderLooper($folder)
