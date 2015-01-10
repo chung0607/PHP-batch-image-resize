@@ -1,7 +1,12 @@
 <?php
 
+/** @var STRING $from - Path of the source folder / file */
 $from = '/path/from';
+
+/** @var STRING $to - Path of the destination folder / file */
 $to = '/path/to';
+
+/** @var boolean $isReplace - Will overwrite existing files in destination if true. */
 $isReplace = false;
 
 $resizer = new Resizer($from, $to, $isReplace);
@@ -89,7 +94,6 @@ class Resizer
         $ext = strtolower($ext);
 
         if ($ext != 'jpg' && $ext != 'jpeg') {
-
             echo "\e[0;33mSkip non JPEG file: \t$file\e[0;37m\n";
             return;
         }
